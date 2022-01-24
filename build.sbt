@@ -1,5 +1,5 @@
 ThisBuild / tlBaseVersion := "0.1"
-
+ThisBuild / tlUntaggedAreSnapshots := false
 ThisBuild / organization := "com.armanbilge"
 ThisBuild / organizationName := "Arman Bilge"
 ThisBuild / developers += tlGitHubDev("armanbilge", "Arman Bilge")
