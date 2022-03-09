@@ -36,18 +36,8 @@ import cats.effect.std.Queue
 object Merge extends IOApp.Simple with Setup {
     def run: IO[Unit] = {
       trace.use { implicit trace =>
-        foo(stream).compile.drain
+        stream.noneTerminate.compile.drain
       }
-    }
-    def other: Stream[IO, Unit] = Stream.repeatEval(IO.unit).take(100)
-
-  def foo[F[_], O](
-    s: Stream[F, O]
-  )(implicit F: Concurrent[F]): Stream[F, O] =
-    Stream.eval(Queue.unbounded[F, Option[O]]).flatMap { q =>
-      Stream.eval(s.enqueueNoneTerminated(q).compile.drain.start).flatMap { _ =>
-        Stream.repeatEval[F, Option[O]](q.take).unNoneTerminate
-      } 
     }
 
 }
