@@ -16,3 +16,16 @@ lazy val bayou = crossProject(JVMPlatform, JSPlatform)
     name := "bayou",
     libraryDependencies += "org.tpolecat" %%% "natchez-core" % "0.1.6"
   )
+
+lazy val test = project
+  .in(file("test"))
+  .dependsOn(bayou.jvm)
+  .enablePlugins(NoPublishPlugin)
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.typelevel" %%% "cats-effect" % "3.3.7",
+      "co.fs2" %%% "fs2-core" % "3.2.5",
+      "org.typelevel" %%% "log4cats-slf4j" % "2.2.0",
+      "org.tpolecat" %%% "natchez-log" % "0.1.6"
+    )
+  )
