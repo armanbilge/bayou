@@ -36,7 +36,7 @@ import cats.effect.std.Queue
 object Merge extends IOApp.Simple with Setup {
     def run: IO[Unit] = {
       trace.use { implicit trace =>
-        stream.noneTerminate.compile.drain
+        stream.map(_ => ()).compile.drain
       }
     }
 
