@@ -1,3 +1,5 @@
+**Archived** Natchez now supports tracing `Resource`s and `Stream`s out-of-the-box.
+
 # Bayou [![bayou Scala version support](https://index.scala-lang.org/armanbilge/bayou/bayou/latest-by-scala-version.svg)](https://index.scala-lang.org/armanbilge/bayou/bayou)
 
 An experimental extension of [Natchez](https://github.com/tpolecat/natchez)'s `Trace` that supports tracing of `Resource` and `Stream`.
